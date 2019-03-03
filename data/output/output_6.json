@@ -1,0 +1,139 @@
+{
+    "features": [
+        "Basic"
+    ],
+    "cv": {
+        "method": "KFold"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 100,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1,
+            "categorical_column": [
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+            ]
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_6.json",
+        "debug_mode": false,
+        "force": true,
+        "out": "output_6"
+    },
+    "evals_result": {
+        "oof_score": 1.6048354185347435,
+        "best_iteration": 71,
+        "feature_importance": {
+            "totals.pageviews": 1512905.02736751,
+            "totals.hits": 605467.4480472859,
+            "hits_pageviews_ratio": 468928.5960781872,
+            "geoNetwork.country": 414454.0606956482,
+            "trafficSource.source": 206772.2788207084,
+            "visitNumber": 181959.5174561292,
+            "visitStartTime": 168731.7193502437,
+            "geoNetwork.city": 165778.22481232882,
+            "device.operatingSystem": 106979.66512778401,
+            "geoNetwork.subContinent": 102844.51949810982,
+            "geoNetwork.networkDomain": 100692.88539739326,
+            "totals.newVisits": 83209.08822348714,
+            "trafficSource.referralPath": 71928.7779147625,
+            "date_dayofyear": 71044.14519506511,
+            "geoNetwork.region": 65607.47582281381,
+            "trafficSource.isTrueDirect": 63442.42509913072,
+            "geoNetwork.metro": 45277.73938947916,
+            "date_day": 39298.71690784395,
+            "date_weekofyear": 39242.99355742335,
+            "date_month": 25907.659557136707,
+            "device.isMobile": 23523.617574334145,
+            "date_dayofweek": 21887.03650124371,
+            "totals.bounces": 21845.340100257657,
+            "geoNetwork.continent": 17529.031660556793,
+            "device.deviceCategory": 16308.697154894471,
+            "channelGrouping": 13464.329266525805,
+            "trafficSource.medium": 8331.07529181242,
+            "networkDomain_notset": 7139.189840555191,
+            "device.browser": 6864.244500160217,
+            "trafficSource.keyword": 6781.124596297741,
+            "date_year": 4494.630672454834,
+            "date_quarter": 4462.558332443237,
+            "time_delta": 859.6726608276367,
+            "trafficSource.adwordsClickInfo.slot": 532.4158601760864,
+            "trafficSource.campaign": 10.264699935913086,
+            "trafficSource.adwordsClickInfo.page": 0.0,
+            "trafficSource.adwordsClickInfo.gclId": 0.0,
+            "trafficSource.adwordsClickInfo.adNetworkType": 0.0,
+            "trafficSource.adContent": 0.0,
+            "trafficSource.adwordsClickInfo.isVideoAd": 0.0,
+            "networkDomain_unknown": 0.0,
+            "networkDomain_voxilitycom": 0.0,
+            "sessionId_overlap_flg": 0.0
+        }
+    }
+}

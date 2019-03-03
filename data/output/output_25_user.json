@@ -1,0 +1,204 @@
+{
+    "features": [
+        "Basic_user",
+        "FrequencyEncoding_user"
+    ],
+    "cv": {
+        "method": "KFold"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 100,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "geonetwork_conflict": {
+            "enabled": true,
+            "files": {
+                "train": "train_preprocessed_geonetwork.ftr",
+                "test": "test_preprocessed_geonetwork.ftr"
+            }
+        },
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_25_user.json",
+        "debug_mode": false,
+        "force": false,
+        "out": "output_25"
+    },
+    "evals_result_user": {
+        "oof_score": 1.6020343686487917,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "rmse": 1.5274056370302205
+                },
+                "valid": {
+                    "rmse": 1.6152090623300857
+                }
+            },
+            "cv2": {
+                "train": {
+                    "rmse": 1.539680205407343
+                },
+                "valid": {
+                    "rmse": 1.5754691041658737
+                }
+            },
+            "cv3": {
+                "train": {
+                    "rmse": 1.5140788377836532
+                },
+                "valid": {
+                    "rmse": 1.601489239655382
+                }
+            },
+            "cv4": {
+                "train": {
+                    "rmse": 1.5197638871557386
+                },
+                "valid": {
+                    "rmse": 1.6040013740093855
+                }
+            },
+            "cv5": {
+                "train": {
+                    "rmse": 1.472990244882996
+                },
+                "valid": {
+                    "rmse": 1.6160529379610287
+                }
+            }
+        },
+        "best_iteration": 81.8,
+        "n_features": 82,
+        "feature_importance": {
+            "totals.pageviews_sum": 1797027.4976980567,
+            "totals.hits_sum": 669402.4690150588,
+            "geoNetwork.country_Frequency_min": 188155.40341234952,
+            "geoNetwork.country_Frequency_max": 175461.07094351054,
+            "totals.pageviews_max": 167232.28059738278,
+            "hits_pageviews_ratio_max": 148718.6462341547,
+            "geoNetwork.subContinent_Frequency_min": 146939.1106338501,
+            "totals.pageviews_mean": 73471.80049713104,
+            "channelGrouping_Frequency_max": 66371.73178491593,
+            "geoNetwork.subContinent_Frequency_max": 62943.208423659205,
+            "geoNetwork.metro_Frequency_min": 58610.96732920837,
+            "channelGrouping_Frequency_min": 56848.317080557346,
+            "device.isMobile_max": 54413.02260160446,
+            "totals.pageviews_std": 53270.16453137398,
+            "totals.hits_std": 53119.07942767143,
+            "hits_pageviews_ratio_std": 50221.01311454773,
+            "hits_pageviews_ratio_median": 47411.16323641398,
+            "totals.hits_max": 45038.75513311625,
+            "hits_pageviews_ratio_sum": 42914.45215056538,
+            "device.isMobile_sum": 34913.97542022988,
+            "hits_pageviews_ratio_mean": 34050.95006491542,
+            "device.operatingSystem_Frequency_min": 33257.3930934906,
+            "geoNetwork.metro_Frequency_max": 32824.09167137146,
+            "hits_pageviews_ratio_mode": 32498.712426578997,
+            "geoNetwork.city_Frequency_min": 32015.558792591095,
+            "geoNetwork.networkDomain_Frequency_max": 30653.063268363476,
+            "device.deviceCategory_Frequency_min": 29973.278968191145,
+            "device.operatingSystem_Frequency_max": 29715.387977218626,
+            "geoNetwork.region_Frequency_min": 29194.3195045948,
+            "hits_pageviews_ratio_geometric_mean": 28659.442369365694,
+            "geoNetwork.networkDomain_Frequency_min": 27994.884731149672,
+            "trafficSource.isTrueDirect_sum": 24638.0007019341,
+            "totals.hits_mean": 23614.303820169345,
+            "totals.pageviews_median": 23202.769015073776,
+            "totals.pageviews_geometric_mean": 22317.636983084678,
+            "hits_pageviews_ratio_min": 22300.456740522386,
+            "totals.pageviews_min": 21572.39605422169,
+            "geoNetwork.region_Frequency_max": 21407.844989871977,
+            "hits_pageviews_ratio_skew": 19437.463026666643,
+            "geoNetwork.city_Frequency_max": 18699.686785674094,
+            "trafficSource.isTrueDirect_std": 17711.859768722952,
+            "geoNetwork.networkDomain_Frequency_std": 17331.68040251732,
+            "totals.hits_geometric_mean": 15882.54125585556,
+            "totals.hits_median": 15537.194437463582,
+            "totals.hits_skew": 15484.855181282759,
+            "device.isMobile_min": 12640.340386009217,
+            "totals.bounces_std": 11566.621355528292,
+            "totals.pageviews_skew": 11490.284556293487,
+            "totals.hits_min": 11424.235305690765,
+            "channelGrouping_Frequency_std": 10224.95975689888,
+            "totals.newVisits_std": 10067.55675163269,
+            "trafficSource.adwordsClickInfo.isVideoAd_sum": 9885.607656812668,
+            "hits_pageviews_ratio_kurtosis": 9380.922750653326,
+            "totals.hits_kurtosis": 8521.729425001144,
+            "totals.pageviews_kurtosis": 8358.189186057449,
+            "totals.pageviews_mode": 8190.2153444767,
+            "trafficSource.isTrueDirect_min": 7693.802659606934,
+            "geoNetwork.continent_Frequency_max": 7562.320795536041,
+            "totals.hits_mode": 7498.746623849869,
+            "device.browser_Frequency_min": 6229.610791015625,
+            "geoNetwork.continent_Frequency_min": 4614.41547369957,
+            "device.browser_Frequency_max": 4368.088527178765,
+            "trafficSource.isTrueDirect_max": 4155.946697235107,
+            "geoNetwork.metro_Frequency_std": 2023.3177004814147,
+            "trafficSource.adwordsClickInfo.isVideoAd_std": 1975.6310890197753,
+            "trafficSource.adwordsClickInfo.isVideoAd_min": 1590.00421295166,
+            "totals.newVisits_sum": 1392.9494298934937,
+            "geoNetwork.city_Frequency_std": 1340.8065711975098,
+            "totals.bounces_sum": 1164.3067943394185,
+            "totals.newVisits_max": 1089.6374645233154,
+            "geoNetwork.region_Frequency_std": 553.8478765338659,
+            "totals.newVisits_min": 318.36045837402344,
+            "trafficSource.adwordsClickInfo.isVideoAd_max": 283.01258277893066,
+            "totals.bounces_max": 106.82513885498047,
+            "geoNetwork.subContinent_Frequency_std": 7.499860000610352,
+            "geoNetwork.country_Frequency_std": 6.8469079494476315,
+            "device.isMobile_std": 0.0,
+            "totals.bounces_min": 0.0,
+            "device.deviceCategory_Frequency_std": 0.0,
+            "device.browser_Frequency_std": 0.0,
+            "device.operatingSystem_Frequency_std": 0.0,
+            "geoNetwork.continent_Frequency_std": 0.0
+        }
+    }
+}

@@ -1,0 +1,168 @@
+{
+    "features": [
+        "Basic_user"
+    ],
+    "cv": {
+        "method": "KFold"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 100,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "geonetwork_conflict": {
+            "enabled": false,
+            "files": {
+                "train": "train_preprocessed_geonetwork.ftr",
+                "test": "test_preprocessed_geonetwork.ftr"
+            }
+        },
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_21_user.json",
+        "debug_mode": false,
+        "force": false,
+        "out": "output_21"
+    },
+    "evals_result_user": {
+        "oof_score": 1.705439635819371,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "rmse": 1.6413240238837403
+                },
+                "valid": {
+                    "rmse": 1.7200738135134805
+                }
+            },
+            "cv2": {
+                "train": {
+                    "rmse": 1.6570995413573382
+                },
+                "valid": {
+                    "rmse": 1.6793883358503583
+                }
+            },
+            "cv3": {
+                "train": {
+                    "rmse": 1.6475253185960481
+                },
+                "valid": {
+                    "rmse": 1.706604229572125
+                }
+            },
+            "cv4": {
+                "train": {
+                    "rmse": 1.6594225910425926
+                },
+                "valid": {
+                    "rmse": 1.7069176694847519
+                }
+            },
+            "cv5": {
+                "train": {
+                    "rmse": 1.6502247218013786
+                },
+                "valid": {
+                    "rmse": 1.7141249891509462
+                }
+            }
+        },
+        "best_iteration": 40.6,
+        "n_features": 47,
+        "feature_importance": {
+            "totals.hits_sum": 971882.2731523648,
+            "totals.pageviews_sum": 971377.6219472602,
+            "totals.hits_mean": 275061.6299345799,
+            "hits_pageviews_ratio_std": 199133.52897574456,
+            "totals.pageviews_max": 177228.20298023,
+            "hits_pageviews_ratio_max": 148897.83352635577,
+            "totals.pageviews_std": 82443.52538853884,
+            "totals.pageviews_median": 73780.83679707647,
+            "device.isMobile_sum": 73213.30430538654,
+            "totals.pageviews_mean": 58193.53454308063,
+            "totals.hits_std": 49773.104118210074,
+            "hits_pageviews_ratio_median": 48169.810576552154,
+            "hits_pageviews_ratio_min": 46226.48005920053,
+            "device.isMobile_min": 44796.48331365585,
+            "device.isMobile_max": 40973.64668982029,
+            "totals.pageviews_kurtosis": 38876.96338071823,
+            "trafficSource.isTrueDirect_sum": 37773.784566241506,
+            "hits_pageviews_ratio_kurtosis": 34936.153776425126,
+            "hits_pageviews_ratio_sum": 34796.39988066226,
+            "hits_pageviews_ratio_mean": 33041.27951188684,
+            "hits_pageviews_ratio_geometric_mean": 30205.4332973063,
+            "totals.newVisits_std": 29692.00463876724,
+            "totals.pageviews_geometric_mean": 29682.61692288518,
+            "totals.hits_geometric_mean": 28670.99192509651,
+            "totals.hits_max": 28412.71901948452,
+            "totals.hits_median": 20006.899132514,
+            "hits_pageviews_ratio_skew": 17499.548555231093,
+            "trafficSource.isTrueDirect_std": 15372.561351776123,
+            "totals.bounces_std": 15340.895244851708,
+            "totals.pageviews_skew": 14727.233736658096,
+            "totals.hits_skew": 14457.696169841289,
+            "totals.hits_kurtosis": 11600.52817466259,
+            "totals.pageviews_min": 10895.402006685734,
+            "totals.hits_min": 10885.04721507579,
+            "trafficSource.isTrueDirect_min": 8985.393494701386,
+            "trafficSource.adwordsClickInfo.isVideoAd_sum": 7728.22011270523,
+            "totals.newVisits_sum": 5204.247142124176,
+            "totals.newVisits_min": 4192.991886901856,
+            "trafficSource.isTrueDirect_max": 3712.2266494750975,
+            "totals.newVisits_max": 2643.4716277122498,
+            "totals.bounces_sum": 1424.0659467458725,
+            "trafficSource.adwordsClickInfo.isVideoAd_min": 1244.4071662902832,
+            "trafficSource.adwordsClickInfo.isVideoAd_std": 729.1548675537109,
+            "trafficSource.adwordsClickInfo.isVideoAd_max": 363.24020652771,
+            "totals.bounces_max": 128.06878242492675,
+            "device.isMobile_std": 0.0,
+            "totals.bounces_min": 0.0
+        }
+    }
+}

@@ -1,0 +1,139 @@
+{
+    "features": [
+        "Basic_user"
+    ],
+    "cv": {
+        "method": "KFold"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 100,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "geonetwork_conflict": {
+            "enabled": false,
+            "files": {
+                "train": "train_preprocessed_geonetwork.ftr",
+                "test": "test_preprocessed_geonetwork.ftr"
+            }
+        },
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_20_user.json",
+        "debug_mode": false,
+        "force": false,
+        "out": "output_20"
+    },
+    "evals_result_user": {
+        "oof_score": 1.7309704472524465,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "rmse": 1.6733958765765364
+                },
+                "valid": {
+                    "rmse": 1.748893809798038
+                }
+            },
+            "cv2": {
+                "train": {
+                    "rmse": 1.691114862460021
+                },
+                "valid": {
+                    "rmse": 1.706063514504525
+                }
+            },
+            "cv3": {
+                "train": {
+                    "rmse": 1.682622378339699
+                },
+                "valid": {
+                    "rmse": 1.726693327505618
+                }
+            },
+            "cv4": {
+                "train": {
+                    "rmse": 1.6856272127072691
+                },
+                "valid": {
+                    "rmse": 1.7275217929844602
+                }
+            },
+            "cv5": {
+                "train": {
+                    "rmse": 1.6766602314802974
+                },
+                "valid": {
+                    "rmse": 1.7454638018036492
+                }
+            }
+        },
+        "best_iteration": 40.0,
+        "n_features": 18,
+        "feature_importance": {
+            "totals.pageviews_sum": 1698817.222974145,
+            "totals.pageviews_mean": 356561.1224657508,
+            "totals.hits_sum": 346251.6670361517,
+            "hits_pageviews_ratio_std": 211505.3781823145,
+            "totals.pageviews_max": 182486.73708654643,
+            "hits_pageviews_ratio_sum": 132557.43779053134,
+            "hits_pageviews_ratio_max": 107479.04747104793,
+            "hits_pageviews_ratio_median": 87339.91536569595,
+            "totals.hits_std": 71661.8427498281,
+            "hits_pageviews_ratio_min": 59162.719130971745,
+            "totals.hits_mean": 51313.02422425859,
+            "hits_pageviews_ratio_mean": 50490.07556318045,
+            "totals.hits_max": 41153.94885400991,
+            "totals.pageviews_std": 33305.789366030695,
+            "totals.hits_median": 26853.52760202483,
+            "totals.pageviews_median": 23791.08169483766,
+            "totals.hits_min": 21694.654316875338,
+            "totals.pageviews_min": 19236.763244315796
+        }
+    }
+}

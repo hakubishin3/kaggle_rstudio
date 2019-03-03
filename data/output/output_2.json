@@ -1,0 +1,81 @@
+{
+    "features": [
+        "Basic"
+    ],
+    "cv": {
+        "method": "TimeSeriesSplit"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 255,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1,
+            "categorical_column": [
+                0,
+                1,
+                2,
+                3
+            ]
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_2.json",
+        "debug_mode": false,
+        "force": false,
+        "out": "output_2"
+    },
+    "evals_result": {
+        "oof_score": 1.9851121624368353,
+        "best_iteration": 91,
+        "feature_importance": {
+            "channelGrouping": 179156.5645737215,
+            "device.operatingSystem": 78275.20440893128,
+            "device.browser": 19616.27520975187,
+            "device.deviceCategory": 12450.417713675528
+        }
+    }
+}

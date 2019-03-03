@@ -1,0 +1,234 @@
+{
+    "features": [
+        "Basic_user",
+        "FrequencyEncoding_user"
+    ],
+    "cv": {
+        "method": "KFold"
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "regression",
+            "metric": "rmse",
+            "learning_rate": 0.1,
+            "num_leaves": 100,
+            "max_depth": 8,
+            "min_child_samples": 100,
+            "max_bin": 100,
+            "subsample": 0.7,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.5,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "num_boost_round": 350,
+            "early_stopping_rounds": 50,
+            "verbose_eval": 50
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "train": "train.ftr",
+            "test": "test.ftr"
+        }
+    },
+    "pre_processing": {
+        "geonetwork_conflict": {
+            "enabled": false,
+            "files": {
+                "train": "train_preprocessed_geonetwork.ftr",
+                "test": "test_preprocessed_geonetwork.ftr"
+            }
+        },
+        "down_sampling": {
+            "enabled": false,
+            "bagging_size": 1,
+            "random_state": 71
+        },
+        "getdata_bounces_notnull": {
+            "enabled": false
+        }
+    },
+    "post_processing": {
+        "bounces_process": {
+            "enabled": true
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_26_user.json",
+        "debug_mode": false,
+        "force": false,
+        "out": "output_26"
+    },
+    "evals_result_user": {
+        "oof_score": 1.5976943668623487,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "rmse": 1.5158994721203216
+                },
+                "valid": {
+                    "rmse": 1.6089976601460438
+                }
+            },
+            "cv2": {
+                "train": {
+                    "rmse": 1.5350994905001727
+                },
+                "valid": {
+                    "rmse": 1.5671351630773804
+                }
+            },
+            "cv3": {
+                "train": {
+                    "rmse": 1.5327971120444073
+                },
+                "valid": {
+                    "rmse": 1.595207434663203
+                }
+            },
+            "cv4": {
+                "train": {
+                    "rmse": 1.5102228699620892
+                },
+                "valid": {
+                    "rmse": 1.6041604280625414
+                }
+            },
+            "cv5": {
+                "train": {
+                    "rmse": 1.4951488719274924
+                },
+                "valid": {
+                    "rmse": 1.614412564801226
+                }
+            }
+        },
+        "best_iteration": 63.599999999999994,
+        "n_features": 112,
+        "feature_importance": {
+            "totals.pageviews_sum": 2149518.51962961,
+            "geoNetwork.country_Frequency_max": 244768.21141910553,
+            "totals.pageviews_max": 188498.32162387966,
+            "totals.hits_max": 186041.79772393554,
+            "geoNetwork.country_Frequency_min": 145907.25146853327,
+            "hits_pageviews_ratio_max": 124047.61809636504,
+            "geoNetwork.subContinent_Frequency_min": 123017.24916791916,
+            "totals.hits_sum": 118012.85631997585,
+            "trafficSource.referralPath_Frequency_min": 117231.34268560409,
+            "totals.pageviews_mean": 77606.50380225181,
+            "totals.pageviews_std": 73382.47695441246,
+            "geoNetwork.metro_Frequency_min": 54977.05081691742,
+            "device.isMobile_sum": 48452.32367722243,
+            "totals.hits_std": 47197.351384115216,
+            "geoNetwork.subContinent_Frequency_max": 45957.04645428508,
+            "hits_pageviews_ratio_std": 43823.38668832034,
+            "geoNetwork.metro_Frequency_max": 40135.43083343506,
+            "hits_pageviews_ratio_mean": 39783.71519961357,
+            "hits_pageviews_ratio_sum": 39268.47183196545,
+            "hits_pageviews_ratio_median": 39160.89061050415,
+            "trafficSource.referralPath_Frequency_max": 36863.27249932289,
+            "device.operatingSystem_Frequency_min": 36525.52562770843,
+            "hits_pageviews_ratio_mode": 36378.61792179346,
+            "geoNetwork.city_Frequency_min": 32078.602539777756,
+            "totals.hits_mean": 29390.151391124724,
+            "trafficSource.source_Frequency_min": 27527.467924001812,
+            "device.isMobile_max": 27234.21993217468,
+            "totals.pageviews_geometric_mean": 26940.808029675485,
+            "trafficSource.source_Frequency_max": 24892.882915878297,
+            "geoNetwork.region_Frequency_min": 22842.335252094268,
+            "trafficSource.isTrueDirect_sum": 21760.822088468074,
+            "geoNetwork.networkDomain_Frequency_min": 20831.93115372658,
+            "geoNetwork.networkDomain_Frequency_max": 20799.20102090798,
+            "totals.pageviews_median": 20435.935430526733,
+            "hits_pageviews_ratio_min": 20209.465832543374,
+            "geoNetwork.city_Frequency_max": 18376.476409339906,
+            "trafficSource.keyword_Frequency_min": 16508.651735687257,
+            "hits_pageviews_ratio_geometric_mean": 15790.589861550927,
+            "trafficSource.isTrueDirect_std": 15268.574321603775,
+            "device.isMobile_min": 14393.507558250427,
+            "geoNetwork.networkDomain_Frequency_std": 13214.343064212799,
+            "totals.hits_median": 13140.701759719848,
+            "hits_pageviews_ratio_skew": 12963.763556909562,
+            "totals.hits_kurtosis": 12850.801876425743,
+            "device.operatingSystem_Frequency_max": 12586.046817684173,
+            "geoNetwork.region_Frequency_max": 12166.96878376007,
+            "trafficSource.referralPath_Frequency_std": 12033.569874191284,
+            "trafficSource.adwordsClickInfo.isVideoAd_sum": 11622.563600111007,
+            "totals.pageviews_skew": 11264.553626155854,
+            "hits_pageviews_ratio_kurtosis": 11247.722130918502,
+            "totals.hits_skew": 11012.448081684113,
+            "geoNetwork.continent_Frequency_max": 10509.362307739259,
+            "totals.bounces_std": 10484.830209732056,
+            "totals.newVisits_std": 10295.878897726536,
+            "totals.hits_min": 10075.31954048276,
+            "totals.hits_geometric_mean": 9499.921009510756,
+            "trafficSource.medium_Frequency_std": 8671.83808708191,
+            "totals.pageviews_mode": 7536.943379735947,
+            "totals.pageviews_min": 7247.971503162384,
+            "channelGrouping_Frequency_max": 6776.65288143158,
+            "totals.pageviews_kurtosis": 6630.476495456695,
+            "trafficSource.keyword_Frequency_max": 5997.466348457337,
+            "geoNetwork.continent_Frequency_min": 5822.997494792939,
+            "channelGrouping_Frequency_std": 5602.728784179688,
+            "totals.hits_mode": 5160.190998363495,
+            "channelGrouping_Frequency_min": 4791.965373826027,
+            "trafficSource.source_Frequency_std": 4052.1775172233583,
+            "trafficSource.isTrueDirect_min": 4044.1097626686096,
+            "trafficSource.isTrueDirect_max": 3648.313427734375,
+            "device.browser_Frequency_min": 3573.2322467803956,
+            "geoNetwork.country_Frequency_std": 3457.0048946380616,
+            "trafficSource.keyword_Frequency_std": 3219.812505531311,
+            "trafficSource.medium_Frequency_min": 3039.582713833451,
+            "device.browser_Frequency_max": 2817.9952664375305,
+            "trafficSource.medium_Frequency_max": 2342.9481122970583,
+            "geoNetwork.metro_Frequency_std": 1656.2497105985663,
+            "geoNetwork.city_Frequency_std": 1332.8725692749024,
+            "geoNetwork.region_Frequency_std": 1025.9691665649414,
+            "totals.newVisits_sum": 951.4665660858154,
+            "totals.newVisits_min": 703.4635856628418,
+            "totals.bounces_sum": 629.7275932312011,
+            "totals.newVisits_max": 509.4403762817383,
+            "device.deviceCategory_Frequency_min": 461.6253967285156,
+            "trafficSource.adwordsClickInfo.gclId_Frequency_min": 375.28381729125977,
+            "trafficSource.adwordsClickInfo.gclId_Frequency_max": 359.0443004608154,
+            "trafficSource.campaign_Frequency_std": 304.1369995117187,
+            "trafficSource.adwordsClickInfo.isVideoAd_std": 273.94719848632815,
+            "trafficSource.adwordsClickInfo.gclId_Frequency_std": 166.18650093078614,
+            "trafficSource.adwordsClickInfo.page_Frequency_std": 147.71199951171874,
+            "trafficSource.adwordsClickInfo.slot_Frequency_min": 147.59519653320314,
+            "trafficSource.campaign_Frequency_min": 118.82342071533203,
+            "geoNetwork.subContinent_Frequency_std": 57.68143920898437,
+            "geoNetwork.continent_Frequency_std": 55.19267959594727,
+            "totals.bounces_max": 51.766998291015625,
+            "trafficSource.adwordsClickInfo.isVideoAd_max": 27.944601440429686,
+            "trafficSource.adwordsClickInfo.slot_Frequency_std": 23.792999267578125,
+            "trafficSource.campaign_Frequency_max": 21.343799591064453,
+            "trafficSource.adContent_Frequency_min": 19.252659606933594,
+            "device.isMobile_std": 18.944520568847658,
+            "trafficSource.adwordsClickInfo.slot_Frequency_max": 5.250320053100586,
+            "totals.bounces_min": 0.0,
+            "device.deviceCategory_Frequency_std": 0.0,
+            "device.browser_Frequency_std": 0.0,
+            "device.operatingSystem_Frequency_std": 0.0,
+            "trafficSource.adwordsClickInfo.adNetworkType_Frequency_std": 0.0,
+            "trafficSource.adwordsClickInfo.adNetworkType_Frequency_max": 0.0,
+            "trafficSource.adwordsClickInfo.isVideoAd_min": 0.0,
+            "trafficSource.adwordsClickInfo.page_Frequency_max": 0.0,
+            "trafficSource.adwordsClickInfo.page_Frequency_min": 0.0,
+            "trafficSource.adContent_Frequency_std": 0.0,
+            "trafficSource.adwordsClickInfo.adNetworkType_Frequency_min": 0.0,
+            "trafficSource.adContent_Frequency_max": 0.0
+        }
+    }
+}
